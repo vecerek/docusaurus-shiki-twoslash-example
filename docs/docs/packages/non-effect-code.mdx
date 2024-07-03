@@ -1,0 +1,55 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# non-effect code
+
+Lorem ipsum
+
+## Usage
+
+  <Tabs groupId="programming-styles">
+  <TabItem value="effect" label="Effect">
+
+```ts twoslash title="example.ts"
+import { Schema } from "@effect/schema"
+import { Effect } from "effect"
+
+const mySchema = Schema.Struct({
+  id: Schema.ULID,
+})
+
+const decode = Schema.decodeUnknown(mySchema)
+
+const program = decode({
+  id: "01HZT9JC9RY11PPAY429ZDZ46X",
+})
+
+void Effect.runPromise(program).then(console.log, console.error)
+```
+
+</TabItem>
+<TabItem value="vanilla" label="Vanilla TS">
+
+```ts twoslash title="example.ts"
+import { Schema } from "@effect/schema"
+
+const mySchema = Schema.Struct({
+  id: Schema.ULID,
+})
+
+const decode = Schema.decodeUnknownSync(mySchema)
+
+console.log(
+  // Throws an Error if decoding fails
+  decode({
+    id: "01HZT9JC9RY11PPAY429ZDZ46X",
+  })
+)
+```
+
+</TabItem>
+</Tabs>
