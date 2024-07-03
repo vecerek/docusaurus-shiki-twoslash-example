@@ -1,0 +1,18 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+deleted file mode 100644
+index a9dac0c4f9394c7ff79ae5c95f08ecfb1001966e..0000000000000000000000000000000000000000
+diff --git a/dist/twoslash.cjs.development.js b/dist/twoslash.cjs.development.js
+index 687e8840f46e760788ec15630bf11e5ddaa3c01a..e261642aedffda9927428bc04a9b290ef40003ce 100644
+--- a/dist/twoslash.cjs.development.js
++++ b/dist/twoslash.cjs.development.js
+@@ -466,6 +466,10 @@ function setOption(name, value, opts, ts) {
+ 
+           break;
+ 
++        case "object":
++          opts[opt.name] = JSON.parse(value);
++          break;
++
+         default:
+           // It's a map!
+           var optMap = opt.type;

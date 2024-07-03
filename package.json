@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.2.0",
+  "workspaces": [
+    "docs",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json && pnpm --recursive --parallel run build",
+    "check": "tsc -b tsconfig.json",
+    "check-recursive": "pnpm --recursive exec tsc -b tsconfig.json"
+  },
+  "devDependencies": {
+    "@effect/language-service": "^0.2.0",
+    "@types/node": "^22.7.7",
+    "typescript": "^5.6.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@typescript/twoslash@3.1.0": "patches/@typescript__twoslash@3.1.0.patch"
+    }
+  }
+}
